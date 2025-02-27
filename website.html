@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Bangan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style> 
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            transition: background 0.5s, color 0.5s;
+        }
+        .light-mode {
+            background: #f4f4f4;
+            color: #333;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-align: center;
+        }
+        .glass:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 30px rgba(0, 255, 255, 0.5);
+        }
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding: 20px;
+            scrollbar-width: none;
+        }
+        .carousel::-webkit-scrollbar { display: none; }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+        .modal-content {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            animation: slideIn 0.3s;
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.3);
+        }
+        .toggle-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            padding: 12px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: transform 0.3s;
+        }
+        .toggle-btn:hover {
+            transform: scale(1.1);
+        }
+        .title {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideIn { from { transform: translateY(-20px); } to { transform: translateY(0); } }
+    </style>
+</head>
+<body class="flex flex-col items-center py-10">
+    <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+    <h1 class="title text-4xl md:text-5xl font-extrabold mb-10 text-center">Team Bangan</h1>
+    <div id="gallery" class="carousel w-full max-w-4xl"></div>
+    
+    <div id="modal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img id="modal-img" class="w-32 h-32 mx-auto rounded-full shadow-lg border-4 border-cyan-500" alt="Student Image">
+            <h2 id="modal-name" class="text-2xl font-bold mt-4"></h2>
+            <p id="modal-desc" class="mt-2 text-sm md:text-base"></p>
+            <button onclick="closeModal()" class="mt-6 px-6 py-3 bg-cyan-500 text-black rounded-full hover:bg-cyan-600 transition">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const students = [
+            { name: "Chyn Totesora", img: "https://i.imgur.com/pzO3Ud4.jpeg", desc: "I love digital arts and anime." },
+            { name: "Izzy Arig", img: "https://i.imgur.com/JCfW0Qe.jpeg", desc: "Gamer and coding enthusiast." },
+            { name: "Edel Sotes", img: "https://i.imgur.com/vlbVp07.jpeg", desc: "STEM student who loves sports and music." },
+            { name: "Vince Sotelo", img: "https://i.imgur.com/5L5kcuc.jpeg", desc: "A dedicated STEM student." },
+            { name: "Lyka Dellosa", img: "https://i.imgur.com/AatXvv3.jpeg", desc: "Passionate about growth and learning." }
+        ];
+
+        const gallery = document.getElementById("gallery");
+        const modal = document.getElementById("modal");
+        
+        students.forEach((student, index) => {
+            const div = document.createElement("div");
+            div.className = "glass text-center p-6 rounded-lg shadow-lg";
+            div.innerHTML = `
+                <img src="${student.img}" alt="${student.name}" class="w-32 h-32 rounded-full mx-auto shadow-lg border-4 border-cyan-500">
+                <p class="mt-2 font-semibold">${student.name}</p>
+            `;
+            div.onclick = () => openModal(index);
+            gallery.appendChild(div);
+        });
+        
+        function openModal(index) {
+            document.getElementById("modal-img").src = students[index].img;
+            document.getElementById("modal-name").innerText = students[index].name;
+            document.getElementById("modal-desc").innerText = students[index].desc;
+            modal.style.display = "flex";
+        }
+        
+        function closeModal(event) {
+            if (!event || event.target === modal) {
+                modal.style.display = "none";
+            }
+        }  
+
+        function toggleTheme() {
+            document.body.classList.toggle("light-mode");
+        }
+    </script>
+</body>
+</html>                                                                                                                             
+
+
+
+ 
