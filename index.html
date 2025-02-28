@@ -30,15 +30,6 @@
             transform: scale(1.05);
             box-shadow: 0px 0px 30px rgba(0, 255, 255, 0.5);
         }
-        .carousel {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 20px;
-            padding: 20px;
-            scrollbar-width: none;
-        }
-        .carousel::-webkit-scrollbar { display: none; }
         .modal {
             display: none;
             position: fixed;
@@ -49,7 +40,6 @@
             background: rgba(0, 0, 0, 0.7);
             align-items: center;
             justify-content: center;
-            animation: fadeIn 0.3s;
         }
         .modal-content {
             background: white;
@@ -57,33 +47,8 @@
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            animation: slideIn 0.3s;
             box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.3);
         }
-        .toggle-btn {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(135deg, #00c6ff, #0072ff);
-            padding: 12px 24px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
-            color: white;
-            transition: transform 0.3s;
-        }
-        .toggle-btn:hover {
-            transform: scale(1.1);
-        }
-        .title {
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #ff416c, #ff4b2b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideIn { from { transform: translateY(-20px); } to { transform: translateY(0); } }
     </style>
 </head>
 <body class="flex flex-col items-center py-10">
@@ -102,11 +67,11 @@
 
     <script>
         const students = [
-            { name: "Chyn Totesora", img: "https://i.imgur.com/pzO3Ud4.jpeg", desc: "I'm Chyn O. Totesora, born in Davao del Norte and raised in Penaplata. I love art, music, anime, and manga, with a special passion for digital arts. My playlist is filled with metal and Vocaloids, fueling my creativity. I collect cute trinkets, and boiled eggs are my go-to comfort food. As a website keeper, I enjoy sharing anime and manga recommendations, connecting with others who share my interests. Creativity and community inspire me, making every moment meaningful." },
-            { name: "Izzy Arig", img: "https://i.imgur.com/JCfW0Qe.jpeg", desc: "I am Al Zyan M. Arig 17 years old who lives in  the beautiful mountains of Barangay Tagbitan-ag. My hobbies are playing mobile eSports games and Pc games and i love programming and coding. In collage i will pursue to be an IT student so that i can continue doing my hobbies." },
-            { name: "Edel Sotes", img: "https://i.imgur.com/vlbVp07.jpeg", desc: "My name is Edel Sotes, I'm 17 years old, and was born on OCTOBER 27, 2007, I am a STEM Student at Samal senior high school, And I love  singing dancing and also playing sports like Volleyball, Badminton." },
-            { name: "Vince Sotelo", img: "https://i.imgur.com/5L5kcuc.jpeg", desc: "My name is Vince Sotelo, I'm 17 years old, and was born on August 23, 2007 at Lupon, Davao Oriental. I am a STEM Senior High Student at Samal Senior High School, Peñaplata, IGACOS. Pursuing a Civil Engineering Course when I enter to College. I'm passionate about learning new things such as playing Chess, Volleyball and Badminton. I love singing alone, watching series and eating a lot. My goal in life is to fulfill my dreams, having my own money, house, and to help my family." },
-            { name: "Lyka Dellosa", img: "https://i.imgur.com/AatXvv3.jpeg", desc: "I am Maria Lyka Dellosa, a determined and hardworking student who believes in continuous growth and learning. As a Grade 12 student at Samal Senior High School, I strive to balance my academics, extracurricular activities, and personal growth. I know I have a strong personality, and I’m not afraid to stand up for what I believe in. However, I also acknowledge my flaws and constantly work on becoming a better and kinder person." }
+            { name: "Chyn Totesora", img: "https://i.imgur.com/pzO3Ud4.jpeg", desc: "I'm Chyn O. Totesora, born in Davao del Norte and raised in Penaplata. I love art, music, anime, and manga, with a special passion for digital arts." },
+            { name: "Izzy Arig", img: "https://i.imgur.com/JCfW0Qe.jpeg", desc: "I am Al Zyan M. Arig, 17 years old, from the beautiful mountains of Barangay Tagbitan-ag. My hobbies are playing eSports and programming." },
+            { name: "Edel Sotes", img: "https://i.imgur.com/vlbVp07.jpeg", desc: "My name is Edel Sotes, I'm 17 years old, a STEM student at Samal Senior High School. I love singing, dancing, and playing sports like volleyball and badminton." },
+            { name: "Vince Sotelo", img: "https://i.imgur.com/5L5kcuc.jpeg", desc: "My name is Vince Sotelo, 17 years old, from Lupon, Davao Oriental. I am a STEM Senior High Student at Samal Senior High School, planning to pursue Civil Engineering." },
+            { name: "Lyka Dellosa", img: "https://i.imgur.com/AatXvv3.jpeg", desc: "I am Maria Lyka Dellosa, a determined and hardworking student. I strive to balance academics, extracurriculars, and personal growth." }
         ];
 
         const gallery = document.getElementById("gallery");
@@ -141,57 +106,4 @@
         }
     </script>
 </body>
-</html>                      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
+</html>
