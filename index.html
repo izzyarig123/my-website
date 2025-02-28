@@ -65,6 +65,11 @@
         </div>
     </div>
 
+    <!-- Chatbot Section -->
+    <div id="chat-box" style="max-height: 300px; overflow-y: auto; border: 1px solid white; padding: 10px; width: 80%; margin-top: 20px;"></div>
+    <input id="user-input" type="text" placeholder="Ask me something..." style="width: 70%; padding: 5px;">
+    <button onclick="sendMessage()" style="padding: 5px 10px; margin-left: 10px;">Send</button>
+    
     <script>
         const students = [
             { name: "Chyn Totesora", img: "https://i.imgur.com/pzO3Ud4.jpeg", desc: "I'm Chyn O. Totesora, born in Davao del Norte and raised in Penaplata. I love art, music, anime, and manga, with a special passion for digital arts." },
@@ -103,6 +108,37 @@
 
         function toggleTheme() {
             document.body.classList.toggle("light-mode");
+        }
+
+        async function fetchAIResponse(userMessage) {
+            const apiKey = "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";  // Replace with your actual API key
+            const apiUrl = "https://api.openai.com/v1/chat/completions";
+
+            const response = await fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    model: "gpt-3.5-turbo",
+                    messages: [{ role: "user", content: userMessage }]
+                })
+            });
+
+            const data = await response.json();
+            return data.choices[0].message.content;
+        }
+
+        async function sendMessage() {
+            const userInput = document.getElementById("user-input").value;
+            if (!userInput) return;
+            
+            const chatBox = document.getElementById("chat-box");
+            chatBox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+
+            const botResponse = await fetchAIResponse(userInput);
+            chatBox.innerHTML += `<p><strong>Bot:</strong> ${botResponse}</p>`;
         }
     </script>
 </body>
